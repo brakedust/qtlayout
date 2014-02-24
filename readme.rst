@@ -5,6 +5,17 @@ This module makes it easier to programatically layout widgets for PyQt and PySid
 applications in Python.  There are several helper functions which wrap commonly used
 layouts (by me anyway).
 
+By default PyQt is used.  PySide can also easily be used.  Before importing anything
+from qt_easy_layout simply do this:
+
+.. code-block:: python
+
+    from qt_easy_layout.qt import use_pyside
+    use_pyside()
+
+
+You can import other items from qt_easy_layout and they will use PySide.
+
 The following layouts are currently handled:
 
     * hbox - QHBoxLayout
@@ -13,11 +24,10 @@ The following layouts are currently handled:
     * grid - QGridLayout
     * hsplit - QSplitter (with horizontal orientation)
     * vsplit - QSplitter (with vetical orientation)
+
 For example, to layout a few widgets in a QHBoxLayout:
 
 .. code-block:: python
-
-    from qt_easy_layout import QtGui
 
     # the necessary imports
     from qt_easy_layout import QtGui, hbox
@@ -34,7 +44,6 @@ For example, to layout a few widgets in a QHBoxLayout:
     # of creating a parent widget, creating a layout,
     # setting the layout of the parent widget, and (finally)
     # adding all of the controls to the layout.
-    # widgets
     # The parent widget is returned.
     w = hbox(label, btn, editor)
 
@@ -44,3 +53,7 @@ For example, to layout a few widgets in a QHBoxLayout:
     mw.show()
     qapp.exec_()
 
+
+Documentation for Qt can be found here: http://qt-project.org/doc/
+Documentation for Pyside can be found here: http://qt-project.org/wiki/PySideDocumentation
+Documentation for PyQt can be found here: http://pyqt.sourceforge.net/Docs/PyQt4/
