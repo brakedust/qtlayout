@@ -1,4 +1,4 @@
-qt_easy_laoyt module
+qt_easy_layout module
 -----------------------
 
 This module makes it easier to programatically layout widgets for PyQt and PySide
@@ -17,30 +17,30 @@ For example, to layout a few widgets in a QHBoxLayout:
 
 .. code-block::python
 
-from qt_easy_layout import QtGui
+    from qt_easy_layout import QtGui
 
-        # the necessary imports
-        from qt_easy_layout import QtGui, hbox
+    # the necessary imports
+    from qt_easy_layout import QtGui, hbox
 
-        # must create a QApplication first
-        qapp = QtGui.QApplication(['test'])
+    # must create a QApplication first
+    qapp = QtGui.QApplication(['test'])
 
-        # define our controls
-        label = QtGui.QLabel('A label')
-        btn = QtGui.QPushButton('Push me')
-        editor = QtGui.QLineEdit('editing')
+    # define our controls
+    label = QtGui.QLabel('A label')
+    btn = QtGui.QPushButton('Push me')
+    editor = QtGui.QLineEdit('editing')
 
-        # lay them out in an hbox layout.  This takes care
-        # of creating a parent widget, creating a layout,
-        # setting the layout of the parent widget, and (finally)
-        # adding all of the controls to the layout.
-        # widgets
-        # The parent widget is returned.
-        w = hbox(label, btn, editor)
+    # lay them out in an hbox layout.  This takes care
+    # of creating a parent widget, creating a layout,
+    # setting the layout of the parent widget, and (finally)
+    # adding all of the controls to the layout.
+    # widgets
+    # The parent widget is returned.
+    w = hbox(label, btn, editor)
 
-        # create the main window and go
-        mw = QtGui.QMainWindow()
-        mw.setCentralWidget(w)
-        mw.show()
-        qapp.exec_()
+    # create the main window and go
+    mw = QtGui.QMainWindow()
+    mw.setCentralWidget(w)
+    mw.show()
+    qapp.exec_()
 
