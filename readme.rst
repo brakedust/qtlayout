@@ -55,5 +55,7 @@ For example, to layout a few widgets in a QHBoxLayout:
 
 
 Documentation for Qt can be found here: http://qt-project.org/doc/
+
 Documentation for Pyside can be found here: http://qt-project.org/wiki/PySideDocumentation
+
 Documentation for PyQt can be found here: http://pyqt.sourceforge.net/Docs/PyQt4/
