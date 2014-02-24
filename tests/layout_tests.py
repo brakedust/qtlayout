@@ -1,8 +1,8 @@
 
-from qteasylayout.qt import use_pyside
+from qt_easy_layout.qt import use_pyside
 use_pyside()
-from qteasylayout.layouts import hbox, vbox, hsplit, vsplit, grid
-from qteasylayout.qt import QtGui
+from qt_easy_layout.layouts import hbox, vbox, hsplit, vsplit, grid
+from qt_easy_layout.qt import QtGui
 
 print(QtGui)
 

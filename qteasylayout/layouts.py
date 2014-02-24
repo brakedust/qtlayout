@@ -5,7 +5,7 @@ layouts module
 
 """
 
-from qteasylayout.qt import QtGui, Qt
+from qt_easy_layout.qt import QtGui, Qt
 
 def hbox(*args, add_spacer=False):
     """
@@ -15,7 +15,7 @@ def hbox(*args, add_spacer=False):
     :param bool add_spacer: if True a spacer is added at the end
 
     Example:
-        >>> from qteasylayout import QtGui
+        >>> from qt_easy_layout import QtGui
         >>> qapp = QtGui.QApplication(['test'])
         >>> label = QtGui.QLabel('A label')
         >>> btn = QtGui.QPushButton('Push me')
@@ -57,7 +57,7 @@ def vbox(*args, add_spacer=False):
         >>> mw = QtGui.QMainWindow()
         >>> mw.setCentralWidget(w)
         >>> mw.show()
-        >>> from qteasylayout import QtGui
+        >>> from qt_easy_layout import QtGui
         >>> qapp.exec_()
         0
     """
@@ -83,7 +83,7 @@ def stack(*args):
     :returns: a stacked widget and the slot to call to set the current displayed item
 
     Example:
-        >>> from qteasylayout import QtGui
+        >>> from qt_easy_layout import QtGui
         >>> qapp = QtGui.QApplication(['test'])
         >>> label = QtGui.QLabel('A label')
         >>> btn = QtGui.QPushButton('Push me')
@@ -115,7 +115,7 @@ def grid(grid_items):
     nested list where each inner list is a row if QWidgets
 
     Example:
-        >>> from qteasylayout import QtGui
+        >>> from qt_easy_layout import QtGui
         >>> qapp = QtGui.QApplication(['test'])
         >>> mw = QtGui.QMainWindow()
         >>> #
