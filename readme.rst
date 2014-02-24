@@ -15,7 +15,7 @@ The following layouts are currently handled:
     * vsplit - QSplitter (with vetical orientation)
 For example, to layout a few widgets in a QHBoxLayout:
 
-.. code-block::python
+.. code::python
 
     from qt_easy_layout import QtGui
 
