@@ -6,8 +6,9 @@ layouts module
 """
 
 from qt_easy_layout.qt import QtGui, Qt
+from qt_easy_layout.custom_layouts import FlowLayout
 
-def hbox(*args, add_spacer=False):
+def hbox(*args, margin=2, add_spacer=False):
     """
     Automatically layouts out the widgets passed in as *args in a QHBoxLayout.  Optionally
     adds a spacer at the end.
@@ -29,6 +30,7 @@ def hbox(*args, add_spacer=False):
     """
     widget = QtGui.QWidget()
     layout = QtGui.QHBoxLayout(widget)
+    layout.setMargin(margin)
     widget.setLayout(layout)
     for w in args:
         w.setParent(widget)
@@ -41,7 +43,7 @@ def hbox(*args, add_spacer=False):
     return widget
 
 
-def vbox(*args, add_spacer=False):
+def vbox(*args, margin=2, add_spacer=False):
     """
     Automatically layouts out the widgets passed in as *args in a QVBoxLayout.  Optionally
     adds a spacer at the end
@@ -64,7 +66,9 @@ def vbox(*args, add_spacer=False):
 
     widget = QtGui.QWidget()
     layout = QtGui.QVBoxLayout(widget)
+    layout.setMargin(margin)
     widget.setLayout(layout)
+
     for w in args:
         layout.addWidget(w)
 
@@ -109,7 +113,7 @@ def stack(*args):
 
     return stack_widget
 
-def grid(grid_items):
+def grid(grid_items, margin=2):
     """
     Arranges the items in grid_items in a QGridLayout.  grid_items should be a
     nested list where each inner list is a row if QWidgets
@@ -144,6 +148,7 @@ def grid(grid_items):
     """
     widget = QtGui.QWidget()
     layout = QtGui.QGridLayout(widget)
+    layout.setMargin(margin)
     widget.setLayout(layout)
 
     for irow, row in enumerate(grid_items):
@@ -166,17 +171,50 @@ def hsplit(left, right, parent=None):
 
     return splitter
 
-def vsplit(top, bottom, parent=None):
+def vsplit(top, bottom, parent=None, splitter=None):
     """
     Arranges the top and bottom widgets in a vertical splitter
     """
-    splitter = QtGui.QSplitter(Qt.Vertical)
+    if splitter is None:
+        splitter = QtGui.QSplitter(Qt.Vertical)
     top.setParent(splitter)
     bottom.setParent(splitter)
     splitter.addWidget(top)
     splitter.addWidget(bottom)
 
     return splitter
+
+
+def flow(*args, margin=2):
+    """
+    Automatically layouts out the widgets passed in as *args in a QVBoxLayout.  Optionally
+    adds a spacer at the end
+    :param QWidget *args: the widgets to arrange in a vertical layout
+    :param bool add_spacer: if True a spacer is added at the bottom
+
+    Example:
+        >>> qapp = QtGui.QApplication(['test'])
+        >>> label = QtGui.QLabel('A label')
+        >>> btn = QtGui.QPushButton('Push me')
+        >>> editor = QtGui.QLineEdit('editing')
+        >>> w = vbox(label, btn, editor)
+        >>> mw = QtGui.QMainWindow()
+        >>> mw.setCentralWidget(w)
+        >>> mw.show()
+        >>> from qt_easy_layout import QtGui
+        >>> qapp.exec_()
+        0
+    """
+
+    widget = QtGui.QWidget()
+    layout = FlowLayout(widget)
+    layout.setMargin(margin)
+    widget.setLayout(layout)
+
+    for w in args:
+        layout.addWidget(w)
+
+    return widget
 
 
 if __name__ == "__main__":
