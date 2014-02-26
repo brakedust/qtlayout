@@ -3,13 +3,12 @@ import sys
 
 setup(
     name='qt_easy_layout',
-    version = '1.0',
+    version = '1.0.1',
     description='Provides convenience functions for easier layout of PyQt and PySide widgets',
-    author='brakedust',
+    author='Brad Campbell',
     url='https://github.com/brakedust/qt_easy_layout',
     author_email='',
-
-    package_dir = {'': 'qt_easy_layout'},
+    package_dir = {'': ''},
     packages = ['qt_easy_layout'],
     keywords = ["Qt", "PyQt", "PySide", "gui"],
     classifiers = [
@@ -17,7 +16,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
+        "License :: OSI Approved :: Apache License, Version 2.0",
         "Operating System :: OS Independent"
     ]
 )

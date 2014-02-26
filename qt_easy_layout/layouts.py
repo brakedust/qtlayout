@@ -5,7 +5,7 @@ layouts module
 
 """
 
-from qt_easy_layout.qt import QtGui, Qt
+from qt_easy_layout.qt import qti
 from qt_easy_layout.custom_layouts import FlowLayout
 
 def hbox(*args, margin=2, add_spacer=False):
@@ -16,28 +16,33 @@ def hbox(*args, margin=2, add_spacer=False):
     :param bool add_spacer: if True a spacer is added at the end
 
     Example:
-        >>> from qt_easy_layout import QtGui
-        >>> qapp = QtGui.QApplication(['test'])
-        >>> label = QtGui.QLabel('A label')
-        >>> btn = QtGui.QPushButton('Push me')
-        >>> editor = QtGui.QLineEdit('editing')
+        >>> from qt_easy_layout import qti
+        >>> qapp = qti.QtGui.QApplication(['test'])
+        >>> label = qti.QtGui.QLabel('A label')
+        >>> btn = qti.QtGui.QPushButton('Push me')
+        >>> editor = qti.QtGui.QLineEdit('editing')
         >>> w = hbox(label, btn, editor)
-        >>> mw = QtGui.QMainWindow()
+        >>> mw = qti.QtGui.QMainWindow()
         >>> mw.setCentralWidget(w)
         >>> mw.show()
         >>> qapp.exec_()
         0
     """
-    widget = QtGui.QWidget()
-    layout = QtGui.QHBoxLayout(widget)
-    layout.setMargin(margin)
+    widget = qti.QtGui.QWidget()
+    layout = qti.QtGui.QHBoxLayout(widget)
+    try:
+        layout.setMargin(margin)
+    except:
+        layout.setContentsMargins(margin, margin, margin, margin)
     widget.setLayout(layout)
     for w in args:
         w.setParent(widget)
         layout.addWidget(w)
 
     if add_spacer:
-        spacer = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacer = qti.QtGui.QSpacerItem(40, 20,
+                                      qti.QtGui.QSizePolicy.Expanding,
+                                      qti.QtGui.QSizePolicy.Minimum)
         layout.addItem(spacer)
 
     return widget
@@ -51,32 +56,38 @@ def vbox(*args, margin=2, add_spacer=False):
     :param bool add_spacer: if True a spacer is added at the bottom
 
     Example:
-        >>> qapp = QtGui.QApplication(['test'])
-        >>> label = QtGui.QLabel('A label')
-        >>> btn = QtGui.QPushButton('Push me')
-        >>> editor = QtGui.QLineEdit('editing')
+        >>> from qt_easy_layout import qti
+        >>> qapp = qti.QtGui.QApplication(['test'])
+        >>> label = qti.QtGui.QLabel('A label')
+        >>> btn = qti.QtGui.QPushButton('Push me')
+        >>> editor = qti.QtGui.QLineEdit('editing')
         >>> w = vbox(label, btn, editor)
-        >>> mw = QtGui.QMainWindow()
+        >>> mw = qti.QtGui.QMainWindow()
         >>> mw.setCentralWidget(w)
         >>> mw.show()
-        >>> from qt_easy_layout import QtGui
         >>> qapp.exec_()
         0
     """
 
-    widget = QtGui.QWidget()
-    layout = QtGui.QVBoxLayout(widget)
-    layout.setMargin(margin)
+    widget = qti.QtGui.QWidget()
+    layout = qti.QtGui.QVBoxLayout(widget)
+    try:
+        layout.setMargin(margin)
+    except:
+        layout.setContentsMargins(margin, margin, margin, margin)
     widget.setLayout(layout)
 
     for w in args:
         layout.addWidget(w)
 
     if add_spacer:
-        spacer = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Maximum)
+        spacer = qti.QtGui.QSpacerItem(20, 40,
+                                      qti.QtGui.QSizePolicy.Minimum,
+                                      qti.QtGui.QSizePolicy.Maximum)
         layout.addItem(spacer)
 
     return widget
+
 
 def stack(*args):
     """
@@ -106,7 +117,7 @@ def stack(*args):
         0
     """
 
-    stack_widget = QtGui.QStackedWidget()
+    stack_widget = qti.QtGui.QStackedWidget()
 
     for w in args:
         stack_widget.addWidget(w)
@@ -119,21 +130,21 @@ def grid(grid_items, margin=2):
     nested list where each inner list is a row if QWidgets
 
     Example:
-        >>> from qt_easy_layout import QtGui
-        >>> qapp = QtGui.QApplication(['test'])
-        >>> mw = QtGui.QMainWindow()
+        >>> from qt_easy_layout import qti
+        >>> qapp = qti.QtGui.QApplication(['test'])
+        >>> mw = qti.QtGui.QMainWindow()
         >>> #
-        >>> label = QtGui.QLabel('A label')
-        >>> btn = QtGui.QPushButton('Push me')
-        >>> editor = QtGui.QLineEdit('editing')
+        >>> label = qti.QtGui.QLabel('A label')
+        >>> btn = qti.QtGui.QPushButton('Push me')
+        >>> editor = qti.QtGui.QLineEdit('editing')
         >>> #
-        >>> label2 = QtGui.QLabel('A label 2')
-        >>> btn2 = QtGui.QPushButton('Push me 2')
-        >>> editor2 = QtGui.QLineEdit('editing 2')
+        >>> label2 = qti.QtGui.QLabel('A label 2')
+        >>> btn2 = qti.QtGui.QPushButton('Push me 2')
+        >>> editor2 = qti.QtGui.QLineEdit('editing 2')
         >>> #
-        >>> label3 = QtGui.QLabel('A label 3')
-        >>> btn3 = QtGui.QPushButton('Push me 3')
-        >>> editor3 = QtGui.QLineEdit('editing 3')
+        >>> label3 = qti.QtGui.QLabel('A label 3')
+        >>> btn3 = qti.QtGui.QPushButton('Push me 3')
+        >>> editor3 = qti.QtGui.QLineEdit('editing 3')
         >>> #
         >>> w3 = grid([[label, btn, editor],
         ...          [label2, btn2, editor2],
@@ -146,9 +157,12 @@ def grid(grid_items, margin=2):
         0
 
     """
-    widget = QtGui.QWidget()
-    layout = QtGui.QGridLayout(widget)
-    layout.setMargin(margin)
+    widget = qti.QtGui.QWidget()
+    layout = qti.QtGui.QGridLayout(widget)
+    try:
+        layout.setMargin(margin)
+    except:
+        layout.setContentsMargins(margin, margin, margin, margin)
     widget.setLayout(layout)
 
     for irow, row in enumerate(grid_items):
@@ -163,7 +177,7 @@ def hsplit(left, right, parent=None):
     Arranges the left and right widgets in a horizontal splitter
     """
 
-    splitter = QtGui.QSplitter(Qt.Horizontal)
+    splitter = qti.QtGui.QSplitter(qti.Qt.Horizontal)
     left.setParent(splitter)
     right.setParent(splitter)
     splitter.addWidget(left)
@@ -176,7 +190,7 @@ def vsplit(top, bottom, parent=None, splitter=None):
     Arranges the top and bottom widgets in a vertical splitter
     """
     if splitter is None:
-        splitter = QtGui.QSplitter(Qt.Vertical)
+        splitter = qti.QtGui.QSplitter(qti.Qt.Vertical)
     top.setParent(splitter)
     bottom.setParent(splitter)
     splitter.addWidget(top)
@@ -193,22 +207,24 @@ def flow(*args, margin=2):
     :param bool add_spacer: if True a spacer is added at the bottom
 
     Example:
-        >>> qapp = QtGui.QApplication(['test'])
-        >>> label = QtGui.QLabel('A label')
-        >>> btn = QtGui.QPushButton('Push me')
-        >>> editor = QtGui.QLineEdit('editing')
+        >>> qapp = qti.QtGui.QApplication(['test'])
+        >>> label = qti.QtGui.QLabel('A label')
+        >>> btn = qti.QtGui.QPushButton('Push me')
+        >>> editor = qti.QtGui.QLineEdit('editing')
         >>> w = vbox(label, btn, editor)
-        >>> mw = QtGui.QMainWindow()
+        >>> mw = qti.QtGui.QMainWindow()
         >>> mw.setCentralWidget(w)
         >>> mw.show()
-        >>> from qt_easy_layout import QtGui
         >>> qapp.exec_()
         0
     """
 
-    widget = QtGui.QWidget()
+    widget = qti.QtGui.QWidget()
     layout = FlowLayout(widget)
-    layout.setMargin(margin)
+    try:
+        layout.setMargin(margin)
+    except:
+        layout.setContentsMargins(margin, margin, margin, margin)
     widget.setLayout(layout)
 
     for w in args:

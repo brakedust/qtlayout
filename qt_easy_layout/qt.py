@@ -2,11 +2,12 @@ QtGui = None
 QtCore = None
 Qt = None
 
-import PyQt4.QtCore
-import PyQt4.QtGui
-QtGui = PyQt4.QtGui
-QtCore = PyQt4.QtCore
-Qt = PyQt4.QtCore.Qt
+class QtImpl:
+    QtGui = None
+    QtCore = None
+    Qt = None
+
+qti = QtImpl()
 
 
 def use_pyqt():
@@ -19,6 +20,9 @@ def use_pyqt():
     QtCore = PyQt4.QtCore
     Qt = PyQt4.QtCore.Qt
 
+    qti.QtGui = QtGui
+    qti.QtCore = QtCore
+    qti.Qt = Qt
 
 def use_pyside():
     import PySide.QtGui
@@ -29,6 +33,10 @@ def use_pyside():
     QtGui = PySide.QtGui
     QtCore = PySide.QtCore
     Qt = PySide.QtCore.Qt
+
+    qti.QtGui = QtGui
+    qti.QtCore = QtCore
+    qti.Qt = Qt
 
 try:
     #try to use pyqt by default

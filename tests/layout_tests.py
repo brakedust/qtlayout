@@ -1,21 +1,23 @@
 
-from qt_easy_layout.qt import use_pyside
-use_pyside()
-from qt_easy_layout.layouts import hbox, vbox, hsplit, vsplit, grid
-from qt_easy_layout.qt import QtGui
+from qt_easy_layout.qt import use_pyside, use_pyqt
 
-print(QtGui)
+from qt_easy_layout.layouts import hbox, vbox, hsplit, vsplit, grid
+from qt_easy_layout import qti
+
+print(qti.QtGui)
 
 def test_1():
-    mw = QtGui.QMainWindow()
+    use_pyqt()
+    mw = qti.QtGui.QMainWindow()
+    print(type(mw))
+    label = qti.QtGui.QLabel('A label')
+    btn = qti.QtGui.QPushButton('Push me')
+    btn.setMinimumHeight(100)
+    editor = qti.QtGui.QLineEdit('editing')
 
-    label = QtGui.QLabel('A label')
-    btn = QtGui.QPushButton('Push me')
-    editor = QtGui.QLineEdit('editing')
-
-    label2 = QtGui.QLabel('A label 2')
-    btn2 = QtGui.QPushButton('Push me 2')
-    editor2 = QtGui.QLineEdit('editing 2')
+    label2 = qti.QtGui.QLabel('A label 2')
+    btn2 = qti.QtGui.QPushButton('Push me 2')
+    editor2 = qti.QtGui.QLineEdit('editing 2')
 
     w3 = vbox(hbox(label, btn, editor),
               hbox(label2, btn2, editor2)
@@ -23,38 +25,40 @@ def test_1():
 
 
     mw.setCentralWidget(w3)
-
+    mw.setWindowTitle('test_1 - vbox - ' + str(type(mw)))
     return mw
 
 def test_2():
+    use_pyqt()
+    mw = qti.QtGui.QMainWindow()
 
-    mw = QtGui.QMainWindow()
+    lw = qti.QtGui.QListWidget(mw)
 
-    lw = QtGui.QListWidget(mw)
-
-    label = QtGui.QLabel('A label')
-    btn = QtGui.QPushButton('Push me')
-    editor = QtGui.QLineEdit('editing')
+    label = qti.QtGui.QLabel('A label')
+    btn = qti.QtGui.QPushButton('Push me')
+    editor = qti.QtGui.QLineEdit('editing')
 
     w = vsplit(lw,
                hbox(label, btn, editor)
                )
 
     mw.setCentralWidget(w)
-
+    mw.setWindowTitle('test_2 - vsplit - ' + str(type(mw)))
     return mw
 
+
+
 def test_3():
+    use_pyside()
+    mw = qti.QtGui.QMainWindow()
 
-    mw = QtGui.QMainWindow()
+    label = qti.QtGui.QLabel('A label')
+    btn = qti.QtGui.QPushButton('Push me')
+    editor = qti.QtGui.QLineEdit('editing')
 
-    label = QtGui.QLabel('A label')
-    btn = QtGui.QPushButton('Push me')
-    editor = QtGui.QLineEdit('editing')
-
-    label2 = QtGui.QLabel('A label 2')
-    btn2 = QtGui.QPushButton('Push me 2')
-    editor2 = QtGui.QLineEdit('editing 2')
+    label2 = qti.QtGui.QLabel('A label 2')
+    btn2 = qti.QtGui.QPushButton('Push me 2')
+    editor2 = qti.QtGui.QLineEdit('editing 2')
 
     w = hsplit(
            vsplit(
@@ -62,45 +66,46 @@ def test_3():
                   hbox(label, btn, editor),
                   hbox(label2, btn2, editor2)
                 ),
-              QtGui.QListWidget()
+              qti.QtGui.QListWidget()
              ),
-           QtGui.QTextEdit()
+           qti.QtGui.QTextEdit()
            )
 
     mw.setCentralWidget(w)
+    mw.setWindowTitle('test_3 - complex - ' + str(type(mw)))
     return mw
 
 def test_4():
     """
     testing a grid layout
     """
-    mw = QtGui.QMainWindow()
+    use_pyside()
+    mw = qti.QtGui.QMainWindow()
 
-    label = QtGui.QLabel('A label')
-    btn = QtGui.QPushButton('Push me')
-    editor = QtGui.QLineEdit('editing')
+    label = qti.QtGui.QLabel('A label')
+    btn = qti.QtGui.QPushButton('Push me')
+    editor = qti.QtGui.QLineEdit('editing')
 
-    label2 = QtGui.QLabel('A label 2')
-    btn2 = QtGui.QPushButton('Push me 2')
-    editor2 = QtGui.QLineEdit('editing 2')
+    label2 = qti.QtGui.QLabel('A label 2')
+    btn2 = qti.QtGui.QPushButton('Push me 2')
+    editor2 = qti.QtGui.QLineEdit('editing 2')
 
-    label3 = QtGui.QLabel('A label 3')
-    btn3 = QtGui.QPushButton('Push me 3')
-    editor3 = QtGui.QLineEdit('editing 3')
+    label3 = qti.QtGui.QLabel('A label 3')
+    btn3 = qti.QtGui.QPushButton('Push me 3')
+    editor3 = qti.QtGui.QLineEdit('editing 3')
 
     w3 = grid([[label, btn, editor],
-             [label2, btn2, editor2],
-             [label3, btn3, editor3]],
-            parent=None
-            )
+               [label2, btn2, editor2],
+               [label3, btn3, editor3]],
+              margin=10)
 
     mw.setCentralWidget(w3)
-
+    mw.setWindowTitle('test_4 - grid - ' + str(type(mw)))
     return mw
 
 
 if __name__ == "__main__":
-    qapp = QtGui.QApplication(['test'])
+    qapp = qti.QtGui.QApplication(['test'])
     qapp.setStyle('cleanlooks')
     mw1 = test_1()
     mw1.show()
