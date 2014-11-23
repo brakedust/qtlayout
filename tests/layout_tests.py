@@ -1,7 +1,7 @@
 
 from qt_easy_layout.qt import use_pyside, use_pyqt
 
-from qt_easy_layout.layouts import hbox, vbox, hsplit, vsplit, grid
+from qt_easy_layout import hbox, vbox, hsplit, vsplit, grid
 from qt_easy_layout import qti
 
 print(qti.QtGui)
@@ -47,7 +47,6 @@ def test_2():
     return mw
 
 
-
 def test_3():
     use_pyside()
     mw = qti.QtGui.QMainWindow()
@@ -55,25 +54,28 @@ def test_3():
     label = qti.QtGui.QLabel('A label')
     btn = qti.QtGui.QPushButton('Push me')
     editor = qti.QtGui.QLineEdit('editing')
+    btn.pressed.connect(lambda *args: editor.setText('pressed'))
 
     label2 = qti.QtGui.QLabel('A label 2')
     btn2 = qti.QtGui.QPushButton('Push me 2')
     editor2 = qti.QtGui.QLineEdit('editing 2')
+    btn2.pressed.connect(lambda *args: editor2.setText('pressed'))
 
     w = hsplit(
-           vsplit(
-              vbox(
-                  hbox(label, btn, editor),
-                  hbox(label2, btn2, editor2)
-                ),
-              qti.QtGui.QListWidget()
-             ),
-           qti.QtGui.QTextEdit()
-           )
+        vsplit(
+            vbox(
+                hbox(label, btn, editor),
+                hbox(label2, btn2, editor2)
+            ),
+            qti.QtGui.QListWidget()
+        ),
+        qti.QtGui.QTextEdit()
+    )
 
     mw.setCentralWidget(w)
     mw.setWindowTitle('test_3 - complex - ' + str(type(mw)))
     return mw
+
 
 def test_4():
     """

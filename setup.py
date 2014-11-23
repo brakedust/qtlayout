@@ -7,7 +7,7 @@ setup(
     description='Provides convenience functions for easier layout of PyQt and PySide widgets',
     author='Brad Campbell',
     url='https://github.com/brakedust/qt_easy_layout',
-    author_email='',
+    author_email='blc.77@verizon.net',
     package_dir = {'': ''},
     packages = ['qt_easy_layout'],
     keywords = ["Qt", "PyQt", "PySide", "gui"],

@@ -3,7 +3,7 @@ qt_easy_layout module
 
 This module makes it easier to programatically layout widgets for PyQt and PySide
 applications in Python.  There are several helper functions which wrap commonly used
-layouts (by me anyway).
+layouts.
 
 By default PyQt is used.  PySide can also easily be used.  Before importing anything
 from qt_easy_layout simply do this:
