@@ -1,20 +1,15 @@
-qt_easy_layout module
 -----------------------
+qtlayout module
+-----------------------
+
+Intro
+------
 
 This module makes it easier to programatically layout widgets for PyQt and PySide
 applications in Python.  There are several helper functions which wrap commonly used
 layouts.
 
-By default PyQt is used.  PySide can also easily be used.  Before importing anything
-from qt_easy_layout simply do this:
-
-.. code-block:: python
-
-    from qt_easy_layout.qt import use_pyside
-    use_pyside()
-
-
-You can import other items from qt_easy_layout and they will use PySide.
+*qtlayout* uses the *qtpy* module to support PyQt4, PyQt5, and PySide.
 
 The following layouts are currently handled:
 
@@ -24,13 +19,18 @@ The following layouts are currently handled:
     * grid - QGridLayout
     * hsplit - QSplitter (with horizontal orientation)
     * vsplit - QSplitter (with vetical orientation)
+    * flow - custom flow layout container
 
-For example, to layout a few widgets in a QHBoxLayout:
+
+Example
+--------
+
+To layout a few widgets in a QHBoxLayout:
 
 .. code-block:: python
 
     # the necessary imports
-    from qt_easy_layout import QtGui, hbox
+    from qtlayout import QtGui, hbox
 
     # must create a QApplication first
     qapp = QtGui.QApplication(['test'])
@@ -53,6 +53,9 @@ For example, to layout a few widgets in a QHBoxLayout:
     mw.show()
     qapp.exec_()
 
+
+Links to External Documentation
+--------------------------------
 
 Documentation for Qt can be found here: http://qt-project.org/doc/
 
