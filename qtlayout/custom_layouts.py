@@ -1,6 +1,7 @@
-from .qt import qti
+from qtpy import QtGui, QtCore
 
-class FlowLayout(qti.QtGui.QLayout):
+
+class FlowLayout(QtGui.QLayout):
     """
     Custom layout based on http://qt-project.org/doc/qt-4.8/layouts-flowlayout.html
     """
@@ -8,10 +9,7 @@ class FlowLayout(qti.QtGui.QLayout):
         super(FlowLayout, self).__init__(parent)
 
         if parent is not None:
-            try:
-                self.setMargin(margin)
-            except:
-                layout.setContentsMargins(margin, margin, margin, margin)
+            self.setMargin(margin)
 
         self.setSpacing(spacing)
 
