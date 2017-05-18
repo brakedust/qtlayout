@@ -30,15 +30,15 @@ To layout a few widgets in a QHBoxLayout:
 .. code-block:: python
 
     # the necessary imports
-    from qtlayout import QtGui, hbox
+    from qtlayout import QtWidgets, hbox
 
     # must create a QApplication first
-    qapp = QtGui.QApplication(['test'])
+    qapp = QtWidgets.QApplication(['test'])
 
     # define our controls
-    label = QtGui.QLabel('A label')
-    btn = QtGui.QPushButton('Push me')
-    editor = QtGui.QLineEdit('editing')
+    label = QtWidgets.QLabel('A label')
+    btn = QtWidgets.QPushButton('Push me')
+    editor = QtWidgets.QLineEdit('editing')
 
     # lay them out in an hbox layout.  This takes care
     # of creating a parent widget, creating a layout,
@@ -48,7 +48,7 @@ To layout a few widgets in a QHBoxLayout:
     w = hbox(label, btn, editor)
 
     # create the main window and go
-    mw = QtGui.QMainWindow()
+    mw = QtWidgets.QMainWindow()
     mw.setCentralWidget(w)
     mw.show()
     qapp.exec_()
@@ -57,8 +57,10 @@ To layout a few widgets in a QHBoxLayout:
 Links to External Documentation
 --------------------------------
 
-Documentation for Qt can be found here: http://qt-project.org/doc/
+    * Qt: http://doc.qt.io/
+    * PySide: http://wiki.qt.io/PySide
+    * PySide2: https://wiki.qt.io/PySide2
+    * PyQt4, PyQt5: https://riverbankcomputing.com/software/pyqt/intro
+    * qtpy: https://github.com/spyder-ide/qtpy
 
-Documentation for Pyside can be found here: http://qt-project.org/wiki/PySideDocumentation
 
-Documentation for PyQt can be found here: http://pyqt.sourceforge.net/Docs/PyQt4/
