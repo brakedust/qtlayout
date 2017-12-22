@@ -7,7 +7,7 @@ layouts module
 
 from qtpy import QtCore, QtWidgets
 
-from .custom_layouts import FlowLayout
+from qtlayout.custom_layouts import FlowLayout
 
 Qt = QtCore.Qt
 
@@ -28,13 +28,14 @@ def hbox(*args, margin=2, widget=None, add_spacer=False):
     :param bool add_spacer: if True a spacer is added at the end
 
     Example:
-        >>> qapp = QtWidgets.QApplication(['test'])
+        >>> qapp = QtWidgets.QApplication(['hbox layout test'])
         >>> label = QtWidgets.QLabel('A label')
         >>> btn = QtWidgets.QPushButton('Push me')
         >>> editor = QtWidgets.QLineEdit('editing')
         >>> w = hbox(label, btn, editor)
         >>> mw = QtWidgets.QMainWindow()
         >>> mw.setCentralWidget(w)
+        >>> mw.setWindowTitle('hbox Example')
         >>> mw.show()
         >>> qapp.exec_()
         0
@@ -74,13 +75,14 @@ def vbox(*args, margin=2, widget=None, add_spacer=False):
     :param bool add_spacer: if True a spacer is added at the bottom
 
     Example:
-        >>> qapp = QtWidgets.QApplication(['test'])
+        >>> qapp = QtWidgets.QApplication(['vbox layout test'])
         >>> label = QtWidgets.QLabel('A label')
         >>> btn = QtWidgets.QPushButton('Push me')
         >>> editor = QtWidgets.QLineEdit('editing')
         >>> w = vbox(label, btn, editor)
         >>> mw = QtWidgets.QMainWindow()
         >>> mw.setCentralWidget(w)
+        >>> mw.setWindowTitle('vbox Example')
         >>> mw.show()
         >>> qapp.exec_()
         0
@@ -125,7 +127,7 @@ def stack(*args):
     :returns: a stacked widget and the slot to call to set the current displayed item
 
     Example:
-        >>> qapp = QtWidgets.QApplication(['test'])
+        >>> qapp = QtWidgets.QApplication(['stack layout test'])
         >>> label = QtWidgets.QLabel('A label')
         >>> btn = QtWidgets.QPushButton('Push me')
         >>> editor = QtWidgets.QLineEdit('editing')
@@ -138,6 +140,7 @@ def stack(*args):
         >>> w_outer = vbox(cb, w)
         >>> mw = QtWidgets.QMainWindow()
         >>> mw.setCentralWidget(w_outer)
+        >>> mw.setWindowTitle('stack Example')
         >>> mw.show()
         >>> qapp.exec_()
         0
@@ -157,7 +160,7 @@ def grid(grid_items, margin=2):
     nested list where each inner list is a row if QWidgets
 
     Example:
-        >>> qapp = QtWidgets.QApplication(['test'])
+        >>> qapp = QtWidgets.QApplication(['grid layout test'])
         >>> mw = QtWidgets.QMainWindow()
         >>> #
         >>> label = QtWidgets.QLabel('A label')
@@ -232,13 +235,14 @@ def flow(*args, margin=2):
     :param bool add_spacer: if True a spacer is added at the bottom
 
     Example:
-        >>> qapp = QtWidgets.QApplication(['test'])
+        >>> qapp = QtWidgets.QApplication(['flow layout test'])
         >>> label = QtWidgets.QLabel('A label')
         >>> btn = QtWidgets.QPushButton('Push me')
         >>> editor = QtWidgets.QLineEdit('editing')
-        >>> w = vbox(label, btn, editor)
+        >>> w = flow(label, btn, editor)
         >>> mw = QtWidgets.QMainWindow()
         >>> mw.setCentralWidget(w)
+        >>> mw.setWindowTitle('flow Example')
         >>> mw.show()
         >>> qapp.exec_()
         0
@@ -262,13 +266,14 @@ def tabs(*args):
     Arguments should alternate with widget and widget names
 
     Example:
-        >>> t = tabs(
-                (QtWidgets.QPushButton(),'A Button Page'),
-                (QtWidgets.QListWidget(), 'A list Page') )
+        >>> qapp = QtWidgets.QApplication(['tabs layout test'])
+        >>> t = tabs((QtWidgets.QPushButton(),'A Button Page'),(QtWidgets.QListWidget(), 'A list Page') )
         >>> mw = QtWidgets.QMainWindow()
         >>> mw.setCentralWidget(t)
+        >>> mw.setWindowTitle('tabs Example')
         >>> mw.show()
         >>> qapp.exec_()
+        0
     """
     widget = QtWidgets.QTabWidget()
     for child_widget, title in args:

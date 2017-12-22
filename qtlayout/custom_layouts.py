@@ -1,7 +1,7 @@
-from qtpy import QtGui, QtCore
+from qtpy import QtGui, QtCore, QtWidgets
 
 
-class FlowLayout(QtGui.QLayout):
+class FlowLayout(QtWidgets.QLayout):
     """
     Custom layout based on http://qt-project.org/doc/qt-4.8/layouts-flowlayout.html
     """
